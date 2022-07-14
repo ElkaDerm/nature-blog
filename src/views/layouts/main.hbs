@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <div id="box">
+
+        {{#if error}}
+        <div class="error-container">
+            <p>{{error}} </p>
+        
+        </div>
+        {{/if}}
+        <nav>
+            <img src="/static/images/logo.png" alt="logo">
+
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/allposts">All Posts</a></li>
+                {{#if user}}
+                <!-- Logged users -->
+                <li><a href="/create">Create Post</a></li>
+                <li><a href="/myPosts">Posts of {{user.email}}</a></li>
+                <li><a href="/login/logout">Logout</a></li>
+                {{else}}
+                <!-- Guest users -->
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+                {{/if}}
+            </ul>
+
+        </nav>
+
+        <main>
+
+            {{{body}}}
+
+         </main>
+
+
+        <footer>
+            © Js Back-End Project
+        </footer>
+    </div>
+
+</body>
+
+</html>
