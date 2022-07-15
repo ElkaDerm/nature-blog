@@ -1,7 +1,7 @@
 const Post = require("../models/Post.js");
 const User = require("../models/User.js");
 
-async function create(postData, userId) {
+async function addPost(postData, userId) {
   let createdPost = await Post.create(postData);
 
   let user = await User.findById(userId);
@@ -9,19 +9,19 @@ async function create(postData, userId) {
 
   return await user.save();
 }
-async function getAll() {
+async function getAllPosts() {
   return await Post.find().lean();
 }
-async function getOne(postId) {
+async function getOnePost(postId) {
   return Post.findById(postId).populate("postVotes").populate("owner");
 }
-async function editOne(postId) {
+async function getOnePost(postId) {
   return Post.findById(postId);
 }
-async function update(postId, newPost) {
+async function updatePost(postId, newPost) {
   return Post.findByIdAndUpdate(postId, newPost);
 }
-async function remove(postId) {
+async function removePost(postId) {
   return Post.findByIdAndDelete(postId);
 }
 
@@ -52,14 +52,14 @@ async function getAllmyPost (userId) {
  }
 
 module.exports = {
-  create,
-  getAll,
-  getOne,
-  editOne,
-  update,
-  remove,
+  addPost,
+  getAllPosts,
+  getOnePost,
+  getOnePost,
+  updatePost,
+  removePost,
+  author,
   addVotesUp,
   addVotesDown,
-  author,
   getAllmyPost,
 };

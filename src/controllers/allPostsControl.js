@@ -3,7 +3,7 @@ const postSerevice=require('../service/postSerevice.js')
 
 async function allPostPage(req, res) {
     
-let all= await postSerevice.getAll()
+let all= await postSerevice.getAllPosts()
 
     res.render('all-posts', {all})
 }

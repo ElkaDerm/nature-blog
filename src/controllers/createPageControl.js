@@ -7,7 +7,7 @@ const {getFirstError}= require('../utils/errorHandler.js')
    try {
     const {title,keyword,location,dateCreated,image,description} =req.body;
 
-   let createdPost= await postService.create({...req.body, owner:req.user._id}, req.user._id);
+   let createdPost= await postService.addPost({...req.body, owner:req.user._id}, req.user._id);
 
     res.redirect('/allposts')
 

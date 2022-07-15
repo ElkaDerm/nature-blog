@@ -7,7 +7,7 @@ const { isUser } = require('../midlleware/gards.js')
 
 router.get('/:postId', async (req, res) => {
 
-    let onePost = await postService.getOne(req.params.postId);
+    let onePost = await postService.getOnePost(req.params.postId);
     
     let onePostObj = await onePost.toObject();
     
@@ -35,7 +35,7 @@ router.get('/:postId', async (req, res) => {
 
 router.get('/delete/:postId', isUser, async (req, res) => {
 
-    await postService.remove(req.params.postId);
+    await postService.removePost(req.params.postId);
 
     res.redirect('/')
 
